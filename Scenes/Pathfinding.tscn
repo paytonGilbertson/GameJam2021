@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/SOUL.tscn" type="PackedScene" id=1]
+
+[sub_resource type="NavigationMesh" id=1]
+vertices = PoolVector3Array( -14.8286, 3, 8.20026, -14.8286, 3, 16.2003, -7.82856, 3, 16.2003, -7.82856, 3, -15.7997, -14.8286, 3, -15.7997, -14.8286, 3, -7.79974, 7.17144, 3, 16.2003, 15.1714, 3, 16.2003, 15.1714, 3, 8.20026, 15.1714, 3, -7.79974, 15.1714, 3, -15.7997, 7.17144, 3, -15.7997, -14.8286, 3, 8.20026, -7.82856, 3, 16.2003, 0.171442, 3, 16.2003, 0.171442, 3, 16.2003, 7.17144, 3, 16.2003, 15.1714, 3, 8.20026, 15.1714, 3, -7.79974, 7.17144, 3, -15.7997, 0.171442, 3, -15.7997, 15.1714, 3, 0.20026, 0.171442, 3, -15.7997, -7.82856, 3, -15.7997, -14.8286, 3, -7.79974, -14.8286, 3, 0.20026, 15.1714, 3, 0.20026, 0.171442, 3, -15.7997, -14.8286, 3, 0.20026, -14.8286, 3, 8.20026, 0.171442, 3, 16.2003, 15.1714, 3, 8.20026 )
+polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 5, 4, 3 ), PoolIntArray( 8, 7, 6 ), PoolIntArray( 11, 10, 9 ), PoolIntArray( 14, 13, 12 ), PoolIntArray( 17, 16, 15 ), PoolIntArray( 19, 18, 20 ), PoolIntArray( 20, 18, 21 ), PoolIntArray( 23, 22, 24 ), PoolIntArray( 24, 22, 25 ), PoolIntArray( 31, 30, 26 ), PoolIntArray( 26, 30, 29 ), PoolIntArray( 26, 29, 28 ), PoolIntArray( 26, 28, 27 ) ]
+cell/size = 1.0
+cell/height = 1.0
+agent/height = 3.0
+agent/radius = 1.0
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 3.5, 2, 4 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.203125, 0.203125, 0.203125, 1 )
+
+[node name="Pathfinding" type="Spatial"]
+
+[node name="Navigation" type="Navigation" parent="."]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+navmesh = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
+transform = Transform( 9.04489, 0, 0, 0, 1, 0, 0, 0, 8.39987, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="SOUL" parent="Navigation" instance=ExtResource( 1 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 11, 1.5, 0 )
